@@ -1,0 +1,103 @@
+source venv/bin/activate &&  safety check -r ./requirements.txt
++==============================================================================+
+
+                               /$$$$$$            /$$
+                              /$$__  $$          | $$
+           /$$$$$$$  /$$$$$$ | $$  \__//$$$$$$  /$$$$$$   /$$   /$$
+          /$$_____/ |____  $$| $$$$   /$$__  $$|_  $$_/  | $$  | $$
+         |  $$$$$$   /$$$$$$$| $$_/  | $$$$$$$$  | $$    | $$  | $$
+          \____  $$ /$$__  $$| $$    | $$_____/  | $$ /$$| $$  | $$
+          /$$$$$$$/|  $$$$$$$| $$    |  $$$$$$$  |  $$$$/|  $$$$$$$
+         |_______/  \_______/|__/     \_______/   \___/   \____  $$
+                                                          /$$  | $$
+                                                         |  $$$$$$/
+  by safetycli.com                                        \______/
+
++==============================================================================+
+
+ [1mREPORT[0m 
+
+[31m[22m  Safety is using PyUp's free open-source vulnerability database. This
+data is 30 days old and limited. [0m
+[31m  For real-time enhanced vulnerability data, fix recommendations, severity
+reporting, cybersecurity support, team and project policy management and more
+sign up at https://pyup.io or email sales@pyup.io[0m
+
+  Safety [1mv3.2.3[0m is scanning for [1mVulnerabilities[0m[1m...[0m
+[1m  Scanning dependencies[0m in your [1mfiles:[0m
+
+  -> ./requirements.txt
+
+  Using [1mopen-source vulnerability database[0m
+[1m  Found and scanned 9 packages[0m
+  Timestamp [1m2024-06-21 23:26:53[0m
+[1m  0[0m[1m vulnerabilities reported[0m
+[1m  0[0m[1m vulnerabilities ignored[0m
++==============================================================================+
+
+ [32m[1mNo known security vulnerabilities reported.[0m 
+
++==============================================================================+
+
+[31m[22m  Safety is using PyUp's free open-source vulnerability database. This
+data is 30 days old and limited. [0m
+[31m  For real-time enhanced vulnerability data, fix recommendations, severity
+reporting, cybersecurity support, team and project policy management and more
+sign up at https://pyup.io or email sales@pyup.io[0m
+
++==============================================================================+[0m
+source venv/bin/activate &&  bandit -lll */*.py *c/*/*.py
+Run started:2024-06-21 13:26:53.481513
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 237
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 6
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 6
+Files skipped (0):
+source venv/bin/activate &&  flake8  ./src/*/*.py ./test/*.py
+source venv/bin/activate &&  PYTHONPATH=/home/a/northcoders/Launchpad/gdpr_obfuscatorV3/obfuscator_function_lambda pytest -v
+============================= test session starts ==============================
+platform linux -- Python 3.11.1, pytest-7.2.0, pluggy-1.0.0 -- /home/a/.pyenv/versions/3.11.1/bin/python3.11
+cachedir: .pytest_cache
+rootdir: /home/a/northcoders/Launchpad/gdpr_obfuscatorV3/obfuscator_function_lambda
+collecting ... collected 5 items
+
+test/test_lambda_function.py::test_get_s3_file_content PASSED            [ 20%]
+test/test_lambda_function.py::test_obfuscate_pii_fields PASSED           [ 40%]
+test/test_lambda_function.py::test_put_s3_file PASSED                    [ 60%]
+test/test_lambda_function.py::test_obfuscator PASSED                     [ 80%]
+test/test_lambda_function.py::test_obfuscator_with_non_csv_file PASSED   [100%]
+
+============================== 5 passed in 1.73s ===============================
+source venv/bin/activate &&  PYTHONPATH=/home/a/northcoders/Launchpad/gdpr_obfuscatorV3/obfuscator_function_lambda coverage run --omit 'venv/*' -m pytest && coverage report -m
+============================= test session starts ==============================
+platform linux -- Python 3.11.1, pytest-7.2.0, pluggy-1.0.0
+rootdir: /home/a/northcoders/Launchpad/gdpr_obfuscatorV3/obfuscator_function_lambda
+collected 5 items
+
+test/test_lambda_function.py .....                                       [100%]
+
+============================== 5 passed in 2.48s ===============================
+Name                           Stmts   Miss  Cover   Missing
+------------------------------------------------------------
+src/utils/obfuscator.py           28      1    96%   87
+src/utils/parser.py                7      0   100%
+src/utils/s3_utils.py              8      0   100%
+test/test_lambda_function.py      55      0   100%
+------------------------------------------------------------
+TOTAL                             98      1    99%
